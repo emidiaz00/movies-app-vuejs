@@ -1,50 +1,60 @@
 <template>
   <div class="container">
     <h1 class="title">Movies App</h1>
-    
     <div class="movie-card" v-for="movie in movies" :key="movie.id">
       <div class="movie-header manOfSteel" >
         <h3 class="movie-title">{{ movie.title }}</h3>
         <img class="movie-poster" :src="'https://image.tmdb.org/t/p/w300/' + movie.poster_path" alt="">
-        
       </div><!--movie-header-->
       <div class="movie-content" >
         <div class="movie-content-header">
           <a href="#">
-            
-          </a>
-          
+            </a>
         </div>
-       
       </div><!--movie-content-->
     </div><!--movie-card-->
     
     
-  </div><!--container-->
+</div><!--container-->
+<div class="container-pages">
+  <button @click="changePage(2)">2</button>
+  <button @click="changePage(3)">3</button>
+  <button @click="changePage(4)">4</button>
+  <button @click="changePage(5)">5</button>
+  <button @click="changePage(6)">6</button>
+  <button @click="nextPage()">&gt;</button>
+
+</div>
   
 </template>
 
 <script>
+
+
 export default {
   data() {
     return {
-      movies: []
+      movies: [],
+      currentPage: 1
     }
   },
   created() {
-    this.fetchMovies()
+    this.fetchData()
   },
   methods: {
-    async fetchMovies() {
-      try {
-        const response = await fetch(
-        "https://api.themoviedb.org/3/movie/popular?api_key=00e1a246b4bfc291602bd541dc83b0c4&language=en-US&page=1"
-        );
-        const data = await response.json();
-        this.movies = data.results;
-      } catch (error) {
-        console.error(error);
-      }
+    async fetchData() {
+      const url = `https://api.themoviedb.org/3/movie/popular?api_key=00e1a246b4bfc291602bd541dc83b0c4&language=en-US&page=${this.currentPage}`;
+      const response = await fetch(url);
+      const json = await response.json();
+      this.movies = json.results;
+    },
+    changePage(page) {
+      this.currentPage = page;
+      this.fetchData();
+    },
+    nextPage() {
+      this.currentPage++
+      this.fetchData();
     }
   }
 };
@@ -159,6 +169,7 @@ a:hover {
   -webkit-transform: scale(1.03);
   transform: scale(1.03);
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 }
 
 .movie-content {
@@ -225,6 +236,25 @@ a:hover {
     margin: 0;
   }
 }
+
+.container-pages {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+.container-pages ul {
+  display: flex;
+  justify-content: center;
+}
+.container-pages ul li {
+  padding: 10px;
+}
+.container-pages button {
+  border:none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 
 </style>
 
