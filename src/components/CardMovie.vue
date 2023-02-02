@@ -6,7 +6,13 @@
         <h3 class="movie-title">{{ movie.title }}</h3>
         <img class="movie-poster" :src="'https://image.tmdb.org/t/p/w300/' + movie.poster_path" alt="">
       </div><!--movie-header-->
-      <div class="movie-content" >
+      <div class="movie-content">
+        <section>
+          <a href="" id="btn">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g data-name="Layer 2" id="Layer_2"><path d="M19,26a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42L26.59,16l-8.3-8.29a1,1,0,0,1,1.42-1.42l9,9a1,1,0,0,1,0,1.42l-9,9A1,1,0,0,1,19,26Z"/><path d="M28,17H4a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"/></g><g id="frame"><rect fill="none" height="32" width="32"/></g></svg>
+              Read More
+          </a>
+      </section>
         <div class="movie-content-header">
           <a href="#">
             </a>
@@ -253,6 +259,60 @@ a:hover {
   border:none;
   cursor: pointer;
   font-weight: bold;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  height: 4vh;
+}
+
+#btn {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+  transition: 0.3s all ease;
+  position: relative;
+}
+
+#btn:hover {
+  color: #292929;
+}
+
+#btn::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  z-index: -1;
+  background-color: rgba(22, 108, 129, 0.705);
+  width: 30px;
+  padding: 8px;
+  height: 30px;
+  border-radius: 80px;
+  transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#btn:hover::before {
+  width: 100%;
+  color: #e9e9e9;
+}
+
+#btn svg {
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+}
+
+#btn svg path {
+  fill: #292929;
 }
 
 
