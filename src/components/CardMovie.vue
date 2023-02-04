@@ -232,10 +232,12 @@ a:hover {
 
 @media screen and (max-width: 500px) {
   .movie-card {
-    width: 95%;
+    width: 80%;
     max-width: 95%;
-    margin: 1em;
     display: block;
+  }
+  .movie-poster {
+    width: 250px;
   }
   
   .container {
