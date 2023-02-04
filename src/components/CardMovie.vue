@@ -72,7 +72,7 @@ export default {
 body {
   height: 100%;
   width: 100%;
-  background: #e9e9e9;
+  background: #03001C;
   font-family: 'Arimo', Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -112,7 +112,6 @@ a:hover {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   max-width: 100%;
-  margin-top: 10vh;
   margin-left: auto;
   padding: 10px;
   margin-right: auto;
@@ -142,7 +141,8 @@ a:hover {
 }
 .movie-poster {
   height: 300px;
-  border-radius: 4px;
+  width: 250px;
+  border-radius: 6px;
 }
 
 .header-icon-container {
@@ -190,6 +190,7 @@ a:hover {
 .title {
   width: 100%;
   font-weight: bold;
+  color: #5B8FB9;
 }
 
 .movie-title {
@@ -284,7 +285,7 @@ section {
 }
 
 #btn:hover {
-  color: #292929;
+  color: #fff;
 }
 
 #btn::before {
@@ -292,7 +293,7 @@ section {
   content: '';
   left: 0;
   z-index: -1;
-  background-color: rgba(22, 108, 129, 0.705);
+  background-color: #301E67;
   width: 30px;
   padding: 8px;
   height: 30px;
@@ -312,7 +313,7 @@ section {
 }
 
 #btn svg path {
-  fill: #292929;
+  fill: #5B8FB9;
 }
 
 
