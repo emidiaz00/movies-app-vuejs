@@ -1,14 +1,14 @@
 <template>
-  <CardMovie />
+  <router-view />
 </template>
 
 <script>
-import CardMovie from './components/CardMovie.vue'
+
 
 export default {
   name: 'App',
   components: {
-    CardMovie
+    
   }
 }
 </script>
