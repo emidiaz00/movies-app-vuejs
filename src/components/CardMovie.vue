@@ -7,12 +7,7 @@
         <img class="movie-poster" :src="'https://image.tmdb.org/t/p/w300/' + movie.poster_path" alt="">
       </div><!--movie-header-->
       <div class="movie-content">
-        <section>
-          <a href="" id="btn">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g data-name="Layer 2" id="Layer_2"><path d="M19,26a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42L26.59,16l-8.3-8.29a1,1,0,0,1,1.42-1.42l9,9a1,1,0,0,1,0,1.42l-9,9A1,1,0,0,1,19,26Z"/><path d="M28,17H4a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"/></g><g id="frame"><rect fill="none" height="32" width="32"/></g></svg>
-              Read More
-          </a>
-      </section>
+        <router-link :to="{ name: 'CardMovieDetail', params: { id: movie.id } }" @click="verMas(movie.id)">Ver más</router-link>
         <div class="movie-content-header">
           <a href="#">
             </a>
@@ -41,7 +36,8 @@ export default {
   data() {
     return {
       movies: [],
-      currentPage: 1
+      currentPage: 1,
+      peliculaSelectedId: null
     }
   },
   created() {
@@ -61,6 +57,19 @@ export default {
     nextPage() {
       this.currentPage++
       this.fetchData();
+    },
+    verMas(id) {
+      const url = 'https://api.themoviedb.org/3';
+      const endpoint = `movie/${id}`;
+      const apiKey = '00e1a246b4bfc291602bd541dc83b0c4'; 
+      
+      fetch(`${url}/${endpoint}?api_key=${apiKey}`)
+        .then(response => response.json())
+        .then(idMovie => {
+          this.peliculaSelectedId = idMovie.id;
+          console.log(this.peliculaSelectedId);
+        })
+        .catch(error => console.error(error));
     }
   }
 };
