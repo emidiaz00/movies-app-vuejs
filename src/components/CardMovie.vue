@@ -7,7 +7,7 @@
         <img class="movie-poster" :src="'https://image.tmdb.org/t/p/w300/' + movie.poster_path" alt="">
       </div><!--movie-header-->
       <div class="movie-content">
-        <router-link :to="{ name: 'CardMovieDetail', params: { id: movie.id } }" @click="verMas(movie.id)">Ver más</router-link>
+        <router-link :to="{ name: 'CardMovieDetail', params: { id: movie.id } }" @click="verMas(movie.id)"><button class="btn-readmore">Read More</button></router-link>
         <div class="movie-content-header">
           <a href="#">
             </a>
@@ -33,6 +33,7 @@
 
 
 export default {
+  
   data() {
     return {
       movies: [],
@@ -77,17 +78,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-body {
-  height: 100%;
-  width: 100%;
-  background: #03001C;
-  font-family: 'Arimo', Arial, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #010b26;
-}
-
+<style scoped>
 * {
   -webkit-transition: 300ms;
   transition: 300ms;
@@ -115,22 +106,14 @@ a:hover {
 }
 
 .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  max-width: 100%;
-  margin-left: auto;
-  padding: 10px;
-  margin-right: auto;
+  height: 100%;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
 }
 
 .movie-card {
-  background: #ffffff;
+  background: #18122B;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 315px;
@@ -207,6 +190,7 @@ a:hover {
   padding: 20px;
   margin: 0 auto;
   font-weight: bold;
+  color: #ffffff;
 }
 
 .movie-info {
@@ -326,7 +310,18 @@ section {
 #btn svg path {
   fill: #5B8FB9;
 }
-
+.btn-readmore {
+  border-radius: 4px;
+  border: none;
+  background-color: #635985;
+  color: #ffffff;
+  padding: 10px;
+  margin-top: 8px;
+}
+.btn-readmore:hover {
+  cursor: pointer;
+  background-color: #5254dd;
+}
 
 </style>
 
