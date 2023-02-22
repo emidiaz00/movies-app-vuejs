@@ -1,48 +1,48 @@
 <template>
-    <div id="card_container" data-offset="2">
-        <div class="pg">
-            <img :src="'https://image.tmdb.org/t/p/w300/' + movie.poster_path" alt="">
-        </div>
-        <div id="card">
-          <div class="shine"></div>
-          <div class="text-block">
-            <h1>{{ movie.title }}<small>
-                <br>{{ movie.release_date }}</small></h1>
-            <p>
-              {{ movie.overview }}
-            </p>
-            <button>Watch Trailer</button>
-          </div>
+  <div id="card_container" data-offset="2">
+    <div class="pg">
+      <img :src="'https://image.tmdb.org/t/p/w300/' + movie.poster_path" alt="">
+    </div>
+    <div id="card">
+      <div class="shine"></div>
+      <div class="text-block">
+        <h1>{{ movie.title }}<small>
+          <br>{{ movie.release_date }}</small></h1>
+          <p>
+            {{ movie.overview }}
+          </p>
+          <button>Watch Trailer</button>
         </div>
       </div>
-</template>
-<script>
-export default {
+    </div>
+  </template>
+  <script>
+  export default {
     props: {
-        id: {
-            type: Number,
-            required: true,
-        },
+      id: {
+        type: Number,
+        required: true,
+      },
     },
     data() {
-        return {
-            movie: null,
-        };
+      return {
+        movie: null,
+      };
     },
     created() {
-        this.fetchMovie();
+      this.fetchMovie();
     },
     methods: {
-        async fetchMovie() {
-            const url = `https://api.themoviedb.org/3/movie/${this.id}?api_key=00e1a246b4bfc291602bd541dc83b0c4&language=en-US`;
-            const response = await fetch(url);
-            const json = await response.json();
-            this.movie = json;
-        },
+      async fetchMovie() {
+        const url = `https://api.themoviedb.org/3/movie/${this.id}?api_key=00e1a246b4bfc291602bd541dc83b0c4&language=en-US`;
+        const response = await fetch(url);
+        const json = await response.json();
+        this.movie = json;
+      },
     },
-};
-
-
+  };
+  
+  
 </script>
 <style scoped>
 
@@ -65,7 +65,7 @@ body {
 
 #card_container {
   width:700px;
-  height:450px;
+  height:480px;
   position:absolute;
   top:50%;
   left:50%;
@@ -74,7 +74,7 @@ body {
 #card {
   animation:backAn 50s infinite;
   color:#fff;
-  padding:30px;
+  padding:40px;
   width:100%;
   height:100%;
   position:absolute;
@@ -121,14 +121,13 @@ body {
   text-transform:uppercase;
   font-weight:700;
   cursor:pointer;
-  margin-top: 50px;
 }
 #card .text-block button:hover {
   background: #443C68;
 }
 #card_container .pg {
   position:absolute;
-  height:450px;
+  height:480px;
   width:40%;
   right:-10px;
   bottom:0px;
@@ -160,6 +159,51 @@ button {
   100% {
     background-size:100%;
   }
+}
+
+@media screen and (max-width: 500px) {
+  #card .text-block h1 {
+    font-size: 24px;
+    width: 50%;
+    margin: 0 auto;
+    padding-right: 150px;
+  }
+  #card {
+    width: 100%;
+  }
+  #card_container .pg {
+    position:absolute;
+    height:480px;
+    width:40%;
+    right: 80px;
+    bottom:0px;
+    z-index:2;
+  }
+  #card_container .pg > img{
+    height: 200px;
+  }
+  .shine {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: #18122B;
+    border-radius: 4px;
+    z-index:1;
+  }
+  
+  #card .text-block p {
+    font-weight:300;
+    width:55%;
+    font-size: 16px;
+    padding-top: 40px;
+    margin: 0 auto;
+  }
+  #card .text-block button {
+    margin-top: 30px;
+  }
+  
 }
 
 </style>
