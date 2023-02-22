@@ -161,7 +161,7 @@ button {
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 500px) {
   #card .text-block h1 {
     font-size: 24px;
     width: 50%;
